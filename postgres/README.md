@@ -35,6 +35,12 @@ nano .env.local
 
 Set the required passwords and configuration values.
 
+## Check docker config to ensure .env file is loaded
+
+```bash
+docker compose --env-file .env.local config
+```
+
 ## Start the stack
 
 ```bash
@@ -44,19 +50,19 @@ docker compose --env-file .env.local up -d
 Check the containers:
 
 ```bash
-docker compose ps
+docker compose --env-file .env.local ps
 ```
 
 Follow PostgreSQL logs:
 
 ```bash
-docker compose logs -f postgres
+docker compose --env-file .env.local logs -f postgres
 ```
 
 Follow pgAdmin logs:
 
 ```bash
-docker compose logs -f pgadmin
+docker compose --env-file .env.local logs -f pgadmin
 ```
 
 ## Access pgAdmin
@@ -168,4 +174,13 @@ Stop containers:
 
 ```bash
 docker compose --env-file .env.local down
+```
+
+## Search and remove volumes
+```bash
+docker volume ls | grep pgadmin
+```
+
+```bash
+docker volume rm <EXAMPLE: postgres_pgadmin_data>
 ```
