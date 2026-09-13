@@ -3,7 +3,7 @@ services:
     image: datalust/seq:latest
     container_name: seq
     ports:
-      - "5341:5341"
+      - "5341:80"
     environment:
       ACCEPT_EULA: "Y"
       SEQ_PASSWORD: "${SEQ_PASSWORD}"
